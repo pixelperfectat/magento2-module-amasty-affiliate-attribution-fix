@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Amasty\Affiliate\Model\Rule\AffiliateQuoteResolver">
+        <plugin name="pixelperfect_affiliate_cookie_fallback"
+                type="PixelPerfect\AmastyAffiliateAttributionFix\Plugin\AffiliateQuoteResolverPlugin"/>
+    </type>
+    <type name="Magento\SalesRule\Model\Quote\Discount">
+        <plugin name="pixelperfect_affiliate_discount_max_comparison"
+                type="PixelPerfect\AmastyAffiliateAttributionFix\Plugin\DiscountMaxComparisonPlugin"
+                sortOrder="100"/>
+    </type>
+</config>
