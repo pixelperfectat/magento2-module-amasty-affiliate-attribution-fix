@@ -23,20 +23,32 @@ use PixelPerfect\AmastyAffiliateAttributionFix\Plugin\DiscountMaxComparisonPlugi
 
 class DiscountMaxComparisonPluginTest extends TestCase
 {
-    private AffiliateQuoteResolver&MockObject $affiliateQuoteResolver;
-    private RuleCollectionFactory&MockObject $ruleCollectionFactory;
-    private Discount&MockObject $subject;
-    private Quote&MockObject $quote;
-    private ShippingAssignmentInterface&MockObject $shippingAssignment;
-    private Total&MockObject $total;
+    /** @var AffiliateQuoteResolver&MockObject */
+    private AffiliateQuoteResolver $affiliateQuoteResolver;
+    /** @var RuleCollectionFactory&MockObject */
+    private MockObject $ruleCollectionFactory;
+    /** @var Discount&MockObject */
+    private Discount $subject;
+    /** @var Quote&MockObject */
+    private MockObject $quote;
+    /** @var ShippingAssignmentInterface&MockObject */
+    private ShippingAssignmentInterface $shippingAssignment;
+    /** @var Total&MockObject */
+    private MockObject $total;
     private DiscountMaxComparisonPlugin $plugin;
 
     protected function setUp(): void
     {
         $this->affiliateQuoteResolver = $this->createMock(AffiliateQuoteResolver::class);
-        $this->ruleCollectionFactory = $this->createMock(RuleCollectionFactory::class);
+        $this->ruleCollectionFactory = $this->getMockBuilder(RuleCollectionFactory::class)
+            ->disableOriginalConstructor()
+            ->addMethods(['create'])
+            ->getMock();
         $this->subject = $this->createMock(Discount::class);
-        $this->quote = $this->createMock(Quote::class);
+        $this->quote = $this->getMockBuilder(Quote::class)
+            ->disableOriginalConstructor()
+            ->addMethods(['getCouponCode'])
+            ->getMock();
         $this->shippingAssignment = $this->createMock(ShippingAssignmentInterface::class);
         $this->total = $this->getMockBuilder(Total::class)
             ->addMethods(['getSubtotal', 'getBaseSubtotal', 'setSubtotalWithDiscount', 'setBaseSubtotalWithDiscount'])
@@ -228,7 +240,7 @@ class DiscountMaxComparisonPluginTest extends TestCase
         $discounts = [];
         foreach ($ruleDiscounts as $ruleId => [$amount, $baseAmount]) {
             $discountData = $this->getMockBuilder(\Magento\SalesRule\Model\Rule\Action\Discount\Data::class)
-                ->addMethods(['getAmount', 'getBaseAmount'])
+                ->onlyMethods(['getAmount', 'getBaseAmount'])
                 ->disableOriginalConstructor()
                 ->getMock();
             $discountData->method('getAmount')->willReturn($amount);
@@ -247,16 +259,21 @@ class DiscountMaxComparisonPluginTest extends TestCase
         $extensionAttributes->method('getDiscounts')->willReturn($discounts);
 
         $item = $this->getMockBuilder(AbstractItem::class)
-            ->addMethods(['isChildrenCalculated'])
-            ->onlyMethods([
+            ->addMethods([
                 'getExtensionAttributes',
-                'getChildren',
                 'getDiscountAmount',
                 'setDiscountAmount',
                 'getBaseDiscountAmount',
                 'setBaseDiscountAmount',
                 'getAppliedRuleIds',
                 'setAppliedRuleIds',
+            ])
+            ->onlyMethods([
+                'getChildren',
+                'isChildrenCalculated',
+                'getQuote',
+                'getAddress',
+                'getOptionByCode',
             ])
             ->disableOriginalConstructor()
             ->getMock();
