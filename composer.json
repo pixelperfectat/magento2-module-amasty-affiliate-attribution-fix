@@ -1,0 +1,29 @@
+{
+    "name": "pixelperfectat/magento2-module-amasty-affiliate-attribution-fix",
+    "description": "Fixes Amasty Affiliate attribution loss when non-affiliate coupon codes are applied",
+    "type": "magento2-module",
+    "license": "MIT",
+    "require": {
+        "php": "^8.3",
+        "magento/framework": "*",
+        "magento/module-sales-rule": "*",
+        "magento/module-quote": "*",
+        "amasty/affiliate": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0"
+    },
+    "autoload": {
+        "files": [
+            "src/registration.php"
+        ],
+        "psr-4": {
+            "PixelPerfect\\AmastyAffiliateAttributionFix\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PixelPerfect\\AmastyAffiliateAttributionFix\\Test\\": "Test/"
+        }
+    }
+}
