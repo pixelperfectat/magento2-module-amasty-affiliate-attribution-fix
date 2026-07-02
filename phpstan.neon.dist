@@ -6,3 +6,5 @@ includes:
 parameters:
     paths:
         - src
+    stubFiles:
+        - phpstan-stubs/Amasty.php
