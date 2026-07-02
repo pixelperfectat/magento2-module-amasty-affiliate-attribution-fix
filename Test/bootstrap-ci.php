@@ -90,14 +90,9 @@ if (!class_exists(\Amasty\Affiliate\Model\Source\Status::class)) {
 
 if (!class_exists(\Magento\SalesRule\Model\ResourceModel\Rule\CollectionFactory::class)) {
     // CollectionFactory is Magento DI-generated code — not a real file in the package.
-    class Magento_SalesRule_Model_ResourceModel_Rule_CollectionFactory
-    {
-        /** @param array<string, mixed> $data */
-        public function create(array $data = []): mixed
-        {
-            return null;
-        }
-    }
+    // Must NOT declare create() here: the test uses addMethods(['create']) which only
+    // works when the method does not exist on the class (i.e. it is being added to the mock).
+    class Magento_SalesRule_Model_ResourceModel_Rule_CollectionFactory {}
     class_alias(
         Magento_SalesRule_Model_ResourceModel_Rule_CollectionFactory::class,
         \Magento\SalesRule\Model\ResourceModel\Rule\CollectionFactory::class
