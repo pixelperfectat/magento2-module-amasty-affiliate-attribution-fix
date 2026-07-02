@@ -1,57 +1,51 @@
 <?php
 
-// PHPStan stubs for Amasty Affiliate (commercial package, not installed in CI).
-// These provide enough type information for static analysis without the actual package.
+// PHPStan bootstrap stubs for Amasty Affiliate (commercial package, not installed in CI).
+// Loaded via phpstan.neon.dist bootstrapFiles so PHPStan knows these types.
 
 declare(strict_types=1);
 
-namespace Amasty\Affiliate\Api\Data;
-
-interface AccountInterface
-{
-    public function getStatus(): int;
-}
-
-namespace Amasty\Affiliate\Api;
-
-use Amasty\Affiliate\Api\Data\AccountInterface;
-use Magento\Framework\Exception\NoSuchEntityException;
-
-interface AccountRepositoryInterface
-{
-    /** @throws NoSuchEntityException */
-    public function getByReferringCode(string $referringCode): AccountInterface;
-}
-
-namespace Amasty\Affiliate\Model;
-
-class RegistryConstants
-{
-    public const CURRENT_AFFILIATE_ACCOUNT_CODE = 'amasty_affiliate_code';
-}
-
-namespace Amasty\Affiliate\Model\Source;
-
-class Status
-{
-    public const ENABLED = 1;
-    public const DISABLED = 0;
-}
-
-namespace Amasty\Affiliate\Model\Rule;
-
-use Amasty\Affiliate\Api\Data\AccountInterface;
-
-class AffiliateQuoteResolver
-{
-    public function resolveAffiliateAccount(): ?AccountInterface
+namespace Amasty\Affiliate\Api\Data {
+    interface AccountInterface
     {
-        return null;
+        public function getStatus(): int;
     }
+}
 
-    /** @return int[] */
-    public function resolveRuleIds(): array
+namespace Amasty\Affiliate\Api {
+    interface AccountRepositoryInterface
     {
-        return [];
+        public function getByReferringCode(string $referringCode): \Amasty\Affiliate\Api\Data\AccountInterface;
+    }
+}
+
+namespace Amasty\Affiliate\Model {
+    class RegistryConstants
+    {
+        public const CURRENT_AFFILIATE_ACCOUNT_CODE = 'amasty_affiliate_code';
+    }
+}
+
+namespace Amasty\Affiliate\Model\Source {
+    class Status
+    {
+        public const ENABLED = 1;
+        public const DISABLED = 0;
+    }
+}
+
+namespace Amasty\Affiliate\Model\Rule {
+    class AffiliateQuoteResolver
+    {
+        public function resolveAffiliateAccount(): ?\Amasty\Affiliate\Api\Data\AccountInterface
+        {
+            return null;
+        }
+
+        /** @return int[] */
+        public function resolveRuleIds(): array
+        {
+            return [];
+        }
     }
 }
