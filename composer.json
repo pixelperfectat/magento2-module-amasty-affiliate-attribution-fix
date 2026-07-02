@@ -41,6 +41,12 @@
             "@test"
         ]
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        }
+    ],
     "config": {
         "sort-packages": true,
         "allow-plugins": {
