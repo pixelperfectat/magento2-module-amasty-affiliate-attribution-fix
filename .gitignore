@@ -2,3 +2,4 @@
 /.phpunit.cache/
 /.idea/
 .claude/
+/phpunit.xml
