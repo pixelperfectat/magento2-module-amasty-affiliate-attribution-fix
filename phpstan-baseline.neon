@@ -1,2 +1,21 @@
 parameters:
 	ignoreErrors:
+		-
+			message: "#^Parameter #1 \\$items of method PixelPerfect\\\\AmastyAffiliateAttributionFix\\\\Plugin\\\\DiscountMaxComparisonPlugin\\:\\:collectAppliedRuleIds\\(\\) expects array<Magento\\\\Quote\\\\Model\\\\Quote\\\\Item\\\\AbstractItem>, array<Magento\\\\Quote\\\\Api\\\\Data\\\\CartItemInterface> given\\.$#"
+			count: 1
+			path: src/Plugin/DiscountMaxComparisonPlugin.php
+
+		-
+			message: "#^Call to an undefined method Magento\\\\Quote\\\\Api\\\\Data\\\\CartItemInterface\\:\\:getChildren\\(\\)\\.$#"
+			count: 2
+			path: src/Plugin/DiscountMaxComparisonPlugin.php
+
+		-
+			message: "#^Call to an undefined method Magento\\\\Quote\\\\Api\\\\Data\\\\CartItemInterface\\:\\:isChildrenCalculated\\(\\)\\.$#"
+			count: 1
+			path: src/Plugin/DiscountMaxComparisonPlugin.php
+
+		-
+			message: "#^Parameter #1 \\$item of method PixelPerfect\\\\AmastyAffiliateAttributionFix\\\\Plugin\\\\DiscountMaxComparisonPlugin\\:\\:adjustItemDiscount\\(\\) expects Magento\\\\Quote\\\\Model\\\\Quote\\\\Item\\\\AbstractItem, Magento\\\\Quote\\\\Api\\\\Data\\\\CartItemInterface given\\.$#"
+			count: 1
+			path: src/Plugin/DiscountMaxComparisonPlugin.php
