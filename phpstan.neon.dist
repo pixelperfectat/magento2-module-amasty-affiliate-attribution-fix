@@ -1,0 +1,8 @@
+includes:
+    # Shared level, bootstrap (bitexpert/phpstan-magento) and defaults.
+    - vendor/pixelperfectat/coding-standard/phpstan.neon
+    - phpstan-baseline.neon
+
+parameters:
+    paths:
+        - src
