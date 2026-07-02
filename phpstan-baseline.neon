@@ -1,7 +1,7 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Parameter #1 \\$items of method PixelPerfect\\\\AmastyAffiliateAttributionFix\\\\Plugin\\\\DiscountMaxComparisonPlugin\\:\\:collectAppliedRuleIds\\(\\) expects array<Magento\\\\Quote\\\\Model\\\\Quote\\\\Item\\\\AbstractItem>, array<Magento\\\\Quote\\\\Api\\\\Data\\\\CartItemInterface> given\\.$#"
+			message: "#^Parameter \\#1 \\$items of method PixelPerfect\\\\AmastyAffiliateAttributionFix\\\\Plugin\\\\DiscountMaxComparisonPlugin\\:\\:collectAppliedRuleIds\\(\\) expects array<Magento\\\\Quote\\\\Model\\\\Quote\\\\Item\\\\AbstractItem>, array<Magento\\\\Quote\\\\Api\\\\Data\\\\CartItemInterface> given\\.$#"
 			count: 1
 			path: src/Plugin/DiscountMaxComparisonPlugin.php
 
@@ -16,6 +16,6 @@ parameters:
 			path: src/Plugin/DiscountMaxComparisonPlugin.php
 
 		-
-			message: "#^Parameter #1 \\$item of method PixelPerfect\\\\AmastyAffiliateAttributionFix\\\\Plugin\\\\DiscountMaxComparisonPlugin\\:\\:adjustItemDiscount\\(\\) expects Magento\\\\Quote\\\\Model\\\\Quote\\\\Item\\\\AbstractItem, Magento\\\\Quote\\\\Api\\\\Data\\\\CartItemInterface given\\.$#"
+			message: "#^Parameter \\#1 \\$item of method PixelPerfect\\\\AmastyAffiliateAttributionFix\\\\Plugin\\\\DiscountMaxComparisonPlugin\\:\\:adjustItemDiscount\\(\\) expects Magento\\\\Quote\\\\Model\\\\Quote\\\\Item\\\\AbstractItem, Magento\\\\Quote\\\\Api\\\\Data\\\\CartItemInterface given\\.$#"
 			count: 1
 			path: src/Plugin/DiscountMaxComparisonPlugin.php
